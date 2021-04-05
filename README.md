@@ -1,6 +1,9 @@
 PDBe-KB Gallery Component
 =
 
+[![Build Status](https://www.travis-ci.com/PDBe-KB/component-image-gallery.svg?branch=main)](https://www.travis-ci.com/PDBe-KB/component-image-gallery)
+[![codecov](https://codecov.io/gh/PDBe-KB/component-image-gallery/branch/main/graph/badge.svg?token=CjBzPrqddz)](https://codecov.io/gh/PDBe-KB/component-image-gallery)
+[![Maintainability](https://api.codeclimate.com/v1/badges/87a94f87fe1c42776b7c/maintainability)](https://codeclimate.com/github/PDBe-KB/component-image-gallery/maintainability)
 
 This is the repository of a lightweight Angular 7 web component that displays images for molecular entities in a gallery.
 

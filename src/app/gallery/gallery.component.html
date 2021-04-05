@@ -1,3 +1,92 @@
-<p>
-  gallery works!
-</p>
+<div *ngIf="data && data.gallery_items && data.gallery_items.length > 0">
+  <h4>{{interactingCount()}} {{ data.title }} ({{ data.gallery_items.length }})</h4>
+  <p>{{ data.help_text }}</p>
+  <div style="margin-bottom: 15px">
+
+    <span style="background-color: rgb(116,179,96); color: white; padding: 3px 5px 4px 5px">
+      <i class="icon icon-functional" data-icon="1"></i>&nbsp;Search:&nbsp;
+    </span>
+    <input (keyup)="setSearchTerm($event)" placeholder="e.g. {{data.gallery_items[0].label.split(' ')[0]}}"
+           style="min-width: 200px; padding-left: 5px" onclick="gtag('event', 'click', {'event_category': 'gallery', 'event_label': 'search', 'value': 'focused'})">
+    <br>
+    <small><i class="icon icon-generic" data-icon="i"></i>&nbsp;Search by molecule name, code or PDB id.</small>
+
+    <div *ngIf="checkHasFlag()">
+      <br>
+      <p>
+        <strong>Show all molecules from PDB entries containing this protein: </strong>
+        <input type="checkbox" (click)="triggerFlag()" style="margin-bottom: 0">
+        <br>
+        <small><i class="icon icon-generic" data-icon="i"></i>&nbsp;Checking this box will show molecules which may not
+          directly interact with the protein.
+        </small>
+      </p>
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <div class="small-12 medium-2 columns" style="text-align: center">
+        <a href="#{{data.div_id}}" *ngIf="!searchTerm && filteredData.length > 6 && showLimit > 6"
+           (click)="showLess()" class="button" style="width: 100%">
+          <i class="icon icon-functional" data-icon="-"></i>
+          Show less items
+        </a>
+      </div>
+    </div>
+    <div *ngFor="let item of filteredData; let i = index"
+         class="small-12 medium-6 large-4 columns gallery-images">
+      <div *ngIf="checkShowLimit(i)">
+        <div id="item-{{i}}" class="row">
+          <div class="small-4 columns" (click)="openMolstarDialog(i)"
+               style="cursor:pointer; display: inline-block; margin-bottom: 15px" onclick="gtag('event', 'click', {'event_category': 'gallery', 'event_label': 'molstar', 'value': 'opened'})">
+            <img src="{{ item.url }}" class="image" [ngStyle]="checkIfImportant(item)">
+            <p style="text-align: center">
+              <i class="icon icon-functional" data-icon="4"></i> 3D view
+            </p>
+          </div>
+          <div class="small-8 columns" style="text-align: left">
+            <p style="font-weight: bold" class="label-tooltip">
+              {{item.id_code}}&nbsp;<small><i class="icon icon-generic" data-icon="i"></i></small>
+              <span class="label-tooltip-text"><strong>Name: </strong>{{item.label}}</span>
+            </p>
+            <p *ngIf="item.categories.length > 0" style="font-weight: bold">
+              {{item.categories}}
+            </p>
+            <p>
+              <a href="{{ item.target_url }}" target="_blank"
+                 onclick="gtag('event', 'click', {'event_category': 'gallery', 'event_label': 'link', 'value': 'clicked'})">
+                <i class="icon icon-functional" data-icon="1"></i>&nbsp;
+                <span>Found in  <strong>{{item.sub_label}} </strong></span>
+                <span *ngIf="item.sub_label > 1">entries</span>
+                <span *ngIf="item.sub_label === 1">entry</span>
+              </a>
+            </p>
+            <div *ngFor="let button of item.buttons">
+              <div *ngIf="checkIfSelf(item)" class="small-12 medium-5">
+                <a class="{{button.class}}" href="{{button.target_url}}" style="padding: 0.5em 1em; width: 100%"
+                   onclick="gtag('event', 'click', {'event_category': 'gallery', 'event_label': 'proteinPage', 'value': 'clicked'})">
+                  <i class="icon icon-generic" data-icon="x"></i> {{button.text}}
+                </a>
+              </div>
+            </div>
+              <app-download [downloadModalData]="downloadModalData[item.id_code]" [type]="'gallery'"></app-download>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row columns">
+      <div class="small-12 medium-2 columns" style="text-align: center">
+        <span *ngIf="!searchTerm && filteredData.length > showLimit" (click)="showAll()" class="button"
+              style="width: 100%">
+            <i class="icon icon-functional" data-icon="+"></i>
+            Show all items
+        </span>
+        <a href="#{{data.div_id}}" *ngIf="!searchTerm && filteredData.length > 6 && showLimit > 6"
+           (click)="showLess()" class="button" style="width: 100%">
+          <i class="icon icon-functional" data-icon="-"></i>
+          Show less items
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

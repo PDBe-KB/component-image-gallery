@@ -1,0 +1,63 @@
+.gallery-images {
+  text-align: center;
+}
+
+.gallery-images img {
+  border: #0a0a0a solid 1px;
+  margin-bottom: 5px;
+  min-width: 100px;
+}
+
+/* This is countering a behavior coming from EBI style CSS */
+.columns:last-child:not(:first-child) {
+  float: left;
+}
+
+a, a:focus, a:active, a:hover{
+  border-bottom-style: none;
+  box-shadow: none !important;
+}
+
+.label-tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.label-tooltip .label-tooltip-text {
+  font-weight: normal;
+  visibility: hidden;
+  width: 250px;
+  background-color: white;
+  border: #0a0a0a 2px solid;
+  color: #0a0a0a;
+  text-align: left;
+  border-radius: 6px;
+  padding: 5px 3px 5px 3px;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.label-tooltip .label-tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.label-tooltip:hover .label-tooltip-text {
+  visibility: visible;
+}
+
+
+
+p {
+  margin-bottom: 5px;
+}

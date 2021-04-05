@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { MolstarDialogComponent } from './molstar-dialog/molstar-dialog.component';
 import { DownloadComponent } from './download/download.component';
+import {MatDialogModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { DownloadComponent } from './download/download.component';
     DownloadComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

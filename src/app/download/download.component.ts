@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-download',
@@ -6,6 +6,8 @@ import {Component} from '@angular/core';
   styles: ['']
 })
 export class DownloadComponent {
+  @Input() downloadModalData: any;
+  @Input() type: string;
 }
 
 // THIS IS A PLACEHOLDER COMPONENT

@@ -1,12 +1,20 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {GalleryComponent} from './gallery/gallery.component';
+import {DownloadComponent} from './download/download.component';
+import {MatDialogModule} from '@angular/material';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        GalleryComponent,
+        DownloadComponent
       ],
+      imports: [
+        MatDialogModule
+      ]
     }).compileComponents();
   }));
 

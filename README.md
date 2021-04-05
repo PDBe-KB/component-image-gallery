@@ -1,27 +1,104 @@
-# PdbeKbGallery
+PDBe-KB Gallery Component
+=
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
 
-## Development server
+This is the repository of a lightweight Angular 7 web component that displays images for molecular entities in a gallery.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The component is used on PDBe-KB Aggregated Views of Proteins and Aggregated Views of Ligands to display macromolecular interaction partners and ligands.
 
-## Code scaffolding
+Note: This component uses the molstar-dialog web component available at [https://github.com/PDBe-KB/component-molstar-dialog](https://github.com/PDBe-KB/component-molstar-dialog) and the download component available at [https://github.com/PDBe-KB/component-download](https://github.com/PDBe-KB/component-download)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Example:
 
-## Build
+<img src="https://raw.githubusercontent.com/PDBe-KB/component-tutorial/main/pdbe-kb-gallery.png">
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Quick Start
 
-## Running unit tests
+Get the code and install dependencies
+```
+git clone https://github.com/PDBe-KB/component-gallery.git
+cd component-gallery
+npm i
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Running the app
+```
+ng serve
+```
 
-## Running end-to-end tests
+Running tests
+```
+ng test
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Dependencies
 
-## Further help
+This web component embeds two other PDBe web components: [https://github.com/PDBe-KB/component-download](https://github.com/PDBe-KB/component-download) and [https://github.com/PDBe-KB/component-molstar-dialog](https://github.com/PDBe-KB/component-molstar-dialog)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+In order to use all the features of this web component, retrieve the molstar-dialog and download components and replace the contents of the "src/app/molstar-dialog" and "src/app/download" folders with those files.
+
+
+The main template should also have the following CSS import:
+```angular2html
+<link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/ebi-global.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Icon-fonts/v1.3/fonts.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/theme-pdbe-green.css" type="text/css" media="all"/>
+```
+
+
+
+## Basic usage
+
+The component can be added to any Angular7+ apps.
+
+Import the component (e.g. in app.module.ts):
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { MolstarDialogComponent } from './molstar-dialog/molstar-dialog.component';
+import { DownloadComponent } from './download/download.component';
+import {MatDialogModule} from '@angular/material';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    GalleryComponent,
+    MolstarDialogComponent,
+    DownloadComponent
+  ],
+  imports: [
+    BrowserModule,
+    MatDialogModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+```
+
+Adding the component to a template:
+```angular2html
+<app-gallery [data]="ligands"></app-gallery>
+```
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/PDBe-KB/component-gallery/tags).
+
+## Authors
+
+* **Mihaly Varadi** - *Initial Implementation* - [mvaradi](https://github.com/mvaradi)
+
+See also the list of [contributors](https://github.com/PDBe-KB/component-gallery/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the EMBL-EBI License - see the [LICENSE](LICENSE) file for details
+
+## Acknowledgements
+
+We would like to thank the [PDBe team](https://www.pdbe.org) and the [PDBe-KB partner resources](https://github.com/PDBe-KB/pdbe-kb-manual/wiki/PDBe-KB-Annotations) for their feedback and contributions.

@@ -13,14 +13,14 @@ Note: This component uses the molstar-dialog web component available at [https:/
 
 ### Example:
 
-<img src="https://raw.githubusercontent.com/PDBe-KB/component-tutorial/main/pdbe-kb-gallery.png">
+<img src="https://raw.githubusercontent.com/PDBe-KB/component-image-gallery/main/pdbe-kb-gallery.png">
 
 ## Quick Start
 
 Get the code and install dependencies
 ```
-git clone https://github.com/PDBe-KB/component-gallery.git
-cd component-gallery
+git clone https://github.com/PDBe-KB/component-image-gallery.git
+cd component-image-gallery
 npm i
 ```
 
@@ -90,13 +90,13 @@ Adding the component to a template:
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/PDBe-KB/component-gallery/tags).
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/PDBe-KB/component-image-gallery/tags).
 
 ## Authors
 
 * **Mihaly Varadi** - *Initial Implementation* - [mvaradi](https://github.com/mvaradi)
 
-See also the list of [contributors](https://github.com/PDBe-KB/component-gallery/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/PDBe-KB/component-image-gallery/contributors) who participated in this project.
 
 ## License
 
